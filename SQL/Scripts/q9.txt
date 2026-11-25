@@ -1,0 +1,5 @@
+q9:
+
+The regional sales analysis for October 2026 shows that North had the highest gross sales of $14,389.25, with South and West following at $14,329.25 and $14,039.25 respectively. However, after subtracting the return values, South moved to the top with net sales of $13,037.00. North recorded $12,827.00, while West recorded $12,762.00.
+
+Although North initially led in gross sales, its higher return value of $1,562.25 reduced its overall sales performance. As a result, South became the leading region, with net sales $210.00 higher than North. This comparison shows that looking at net sales gives a clearer picture of regional performance because it takes product returns into account.

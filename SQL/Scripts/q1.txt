@@ -1,0 +1,48 @@
+q1:
+
+USE RetailSalesDB;
+GO
+
+CREATE TABLE Regions (
+    RegionID INT PRIMARY KEY,
+    RegionName VARCHAR(50)
+);
+
+INSERT INTO Regions (RegionID, RegionName)
+VALUES
+(1, 'North'),
+(2, 'South'),
+(3, 'West');
+
+ALTER TABLE Stores
+ADD RegionID INT;
+
+UPDATE Stores
+SET RegionID =
+    CASE
+        WHEN UPPER(LTRIM(RTRIM(RegionRaw))) IN ('N', 'NORTH') THEN 1
+        WHEN UPPER(LTRIM(RTRIM(RegionRaw))) IN ('S', 'SOUTH') THEN 2
+        WHEN UPPER(LTRIM(RTRIM(RegionRaw))) IN ('W', 'WEST') THEN 3
+        ELSE NULL
+    END;
+
+ALTER TABLE Stores
+ADD CONSTRAINT FK_Stores_Regions
+FOREIGN KEY (RegionID) REFERENCES Regions(RegionID);
+
+SELECT
+    S.StoreID,
+    S.StoreName,
+    S.RegionRaw,
+    R.RegionID,
+    R.RegionName
+FROM Stores S
+LEFT JOIN Regions R
+    ON S.RegionID = R.RegionID
+ORDER BY S.StoreID;
+
+SELECT *
+FROM Stores
+WHERE RegionID IS NULL;
+
+ 
